@@ -1,26 +1,311 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #161d19;
+  --muted: #4a534e;
+  --paper: #f5f3ee;
+  --paper-2: #fffcf8;
+  --green: #14532d;
+  --green-deep: #0b3a24;
+  --green-soft: #e8eee9;
+  --amber: #92400e;
+  --red: #8f1d1d;
+  --blue: #1e3a5f;
+  --line: #c9c2b4;
+  --radius: 0.375rem;
+  --tap: 3.25rem;
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Al Qalam Taj Nastaleeq", serif;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.375rem;
+  --radius-3xl: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  background: var(--paper);
+  overflow-x: clip;
+}
+
+html[data-lang="ur"] {
+  line-height: 1.9;
+}
+
+html[dir="rtl"] body,
+html[dir="rtl"] {
+  text-align: start;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  overflow-wrap: break-word;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.font-urdu {
+  font-family: var(--font-nastaliq), "Noto Nastaliq Urdu", serif;
+  line-height: 2;
+  letter-spacing: 0;
+}
+
+.shell {
+  width: 100%;
+  max-width: 36rem;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    max-width: 42rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    max-width: 46rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .shell {
+    max-width: 48rem;
+  }
+}
+
+.shell-wide {
+  width: 100%;
+  max-width: 64rem;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: var(--radius);
+}
+
+.field {
+  width: 100%;
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.field:focus {
+  outline: 3px solid color-mix(in oklab, var(--green) 35%, white);
+  border-color: var(--green);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  background: var(--green-deep);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.1rem;
+  font-size: 1.05rem;
+  border: 1px solid var(--green-deep);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  font-weight: 600;
+  padding: 0.75rem 1.1rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[href]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-a11y-motion] *,
+html[data-a11y-motion] *::before,
+html[data-a11y-motion] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-low-bw] *,
+html[data-low-bw] *::before,
+html[data-low-bw] *::after {
+  animation: none !important;
+  transition: none !important;
+  backdrop-filter: none !important;
+}
+
+html[data-low-bw] .btn-primary,
+html[data-low-bw] .btn-ghost {
+  min-height: 3.85rem;
+  font-size: 1.125rem;
+  padding: 0.9rem 1.15rem;
+}
+
+html[data-low-bw] .field {
+  min-height: 3.85rem;
+  font-size: 1.125rem;
+}
+
+html[data-low-bw] nav a {
+  min-height: 4.5rem;
+}
+
+html[data-low-bw] [role="group"] button {
+  min-height: 3.85rem;
+}
+
+html[data-low-bw] .rural-hide-icon,
+html[data-low-bw] .rural-qr {
+  display: none !important;
+}
+
+html[data-a11y-text] {
+  font-size: 125%;
+}
+
+html[data-a11y-text] .btn-primary,
+html[data-a11y-text] .btn-ghost,
+html[data-a11y-text] .field {
+  min-height: 3.5rem;
+}
+
+html[data-a11y-text] nav a {
+  min-height: 4.25rem;
+}
+
+html[data-a11y-text] summary {
+  min-height: 2.75rem;
+}
+
+html[data-a11y-contrast] {
+  --ink: #000000;
+  --muted: #1a1a1a;
+  --paper: #ffffff;
+  --paper-2: #ffffff;
+  --green: #005228;
+  --green-deep: #002e16;
+  --green-soft: #d7efe3;
+  --amber: #5c3a00;
+  --red: #7a0000;
+  --line: #000000;
+  color-scheme: light;
+}
+
+html[data-a11y-contrast] .btn-primary {
+  background: #000000;
+  color: #ffffff;
+  border: 3px solid #000000;
+}
+
+html[data-a11y-contrast] .btn-ghost,
+html[data-a11y-contrast] .field {
+  border-width: 3px;
+  border-color: #000000;
+}
+
+html[data-a11y-contrast] :focus-visible {
+  outline: 4px solid #000000;
+  outline-offset: 3px;
+}
+
+@media (prefers-contrast: more) {
+  html {
+    --ink: #000000;
+    --muted: #1a1a1a;
+    --paper: #ffffff;
+    --paper-2: #ffffff;
+    --green: #005228;
+    --green-deep: #002e16;
+    --green-soft: #d7efe3;
+    --line: #000000;
+  }
+}
+
+.sr-only:focus {
+  position: fixed;
+  inset-inline-start: 0.75rem;
+  top: 0.75rem;
+  z-index: 80;
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+  overflow: visible;
+  white-space: normal;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  background: var(--green-deep);
+  color: #fff;
+}
+
+@media print {
+  header,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+  .report-full {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  main {
+    max-width: none;
+    padding: 0;
+  }
+  #share-sheet {
+    border: none;
+    padding: 0;
+  }
 }

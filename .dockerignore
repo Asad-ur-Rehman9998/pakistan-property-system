@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+data/checks/*.json
+npm-debug.log*
+Dockerfile
+docker-compose.yml
+README.md
+.github
+api
+infra
+**/__pycache__
+.venv

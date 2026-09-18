@@ -1,0 +1,73 @@
+import type { Localized, ProvinceId } from "@/types/check";
+
+export const provinces: { id: ProvinceId; name: Localized }[] = [
+  { id: "punjab", name: { en: "Punjab", ur: "پنجاب", roman: "Punjab" } },
+  { id: "sindh", name: { en: "Sindh", ur: "سندھ", roman: "Sindh" } },
+  { id: "kpk", name: { en: "Khyber Pakhtunkhwa", ur: "خیبر پختونخوا", roman: "Khyber Pakhtunkhwa" } },
+  { id: "balochistan", name: { en: "Balochistan", ur: "بلوچستان", roman: "Balochistan" } },
+  { id: "islamabad", name: { en: "Islamabad", ur: "اسلام آباد", roman: "Islamabad" } },
+  { id: "gb", name: { en: "Gilgit-Baltistan", ur: "گلگت بلتستان", roman: "Gilgit-Baltistan" } },
+  { id: "ajk", name: { en: "Azad Jammu & Kashmir", ur: "آزاد جموں و کشمیر", roman: "Azad Kashmir" } },
+];
+
+export const citiesByProvince: Record<ProvinceId, string[]> = {
+  punjab: [
+    "Lahore",
+    "Faisalabad",
+    "Rawalpindi",
+    "Multan",
+    "Gujranwala",
+    "Sialkot",
+    "Bahawalpur",
+    "Sargodha",
+    "Sahiwal",
+    "Rahim Yar Khan",
+    "Gujrat",
+    "Sheikhupura",
+    "Jhelum",
+    "Okara",
+  ],
+  sindh: [
+    "Karachi",
+    "Hyderabad",
+    "Sukkur",
+    "Larkana",
+    "Nawabshah",
+    "Mirpurkhas",
+    "Thatta",
+    "Jacobabad",
+  ],
+  kpk: [
+    "Peshawar",
+    "Abbottabad",
+    "Mardan",
+    "Swat",
+    "Kohat",
+    "Dera Ismail Khan",
+    "Nowshera",
+    "Mansehra",
+  ],
+  balochistan: ["Quetta", "Gwadar", "Turbat", "Khuzdar", "Hub", "Chaman"],
+  islamabad: ["Islamabad"],
+  gb: ["Gilgit", "Skardu", "Hunza"],
+  ajk: ["Muzaffarabad", "Mirpur", "Rawalakot"],
+};
+
+export const knownSocietyHints = [
+  "dha",
+  "bahria",
+  "askari",
+  "cda",
+  "lda",
+  "kda",
+  "gulberg",
+  "model town",
+  "clifton",
+  "defence",
+  "cantt",
+  "welfare",
+  "cooperative",
+  "scheme",
+  "phase",
+  "block",
+];
